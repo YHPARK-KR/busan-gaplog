@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Ledger Audit Interface
-description: Stitch 프로젝트 "Busan GapLog Audit View"가 만든 디자인 시스템을 옮긴 것. 원본은 docs/DESIGN.stitch.md. README 그림과 view.html이 이 값을 읽는다.
+description: Stitch 프로젝트 "Busan GapLog Audit View"가 만든 디자인 시스템을 옮긴 것. 원본은 docs/stitch/DESIGN.md. README 그림과 view.html이 이 값을 읽는다.
 colors:
   primary: "#165B58"
   partial: "#7BAEA8"

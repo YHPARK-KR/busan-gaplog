@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>busan-gaplog // audit</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#93d2ce", "on-primary-fixed": "#00201f", "on-surface-variant": "#3f4948", "surface-tint": "#276865", "on-error-container": "#93000a", "surface-container": "#e0f2eb", "surface-variant": "#d5e6e0", "surface-container-high": "#dbece5", "primary-fixed": "#afeeea", "error": "#ba1a1a", "on-surface": "#0f1e1b", "secondary-fixed": "#b8ede6", "on-tertiary-fixed-variant": "#6b3a23", "tertiary-container": "#78442d", "secondary-fixed-dim": "#9cd0ca", "on-primary-fixed-variant": "#01504d", "on-tertiary-container": "#fcb496", "surface-container-low": "#e6f8f1", "inverse-primary": "#93d2ce", "surface-container-highest": "#d5e6e0", "surface-dim": "#cdded7", "tertiary-fixed": "#ffdbcd", "inverse-surface": "#24332f", "outline": "#6f7978", "on-secondary-container": "#3a6d68", "surface": "#ecfdf7", "surface-bright": "#ecfdf7", "background": "#ecfdf7", "secondary-container": "#b8ede6", "on-background": "#0f1e1b", "tertiary": "#5c2e19", "primary-container": "#165b58", "secondary": "#346762", "on-tertiary": "#ffffff", "on-primary": "#ffffff", "outline-variant": "#bfc8c7", "tertiary-fixed-dim": "#feb698", "on-secondary-fixed-variant": "#194f4a", "surface-container-lowest": "#ffffff", "on-secondary-fixed": "#00201d", "error-container": "#ffdad6", "on-secondary": "#ffffff", "on-error": "#ffffff", "primary": "#004240", "on-primary-container": "#92d1cc", "on-tertiary-fixed": "#351001", "inverse-on-surface": "#e3f5ee" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-sm": "0.5rem", "space-xl": "1.5rem", "margin": "1rem", "space-md": "0.75rem", "space-lg": "1rem", "gutter": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-md": ["Inter"], "body-md": ["Inter"], "code-md": ["JetBrains Mono"], "label-sm": ["Inter"], "body-sm": ["Inter"], "code-sm": ["JetBrains Mono"], "headline-lg": ["Inter"] }, "fontSize": { "headline-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "code-md": ["12px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "code-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant"><div class="h-12 max-w-[960px] mx-auto px-margin flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-code-sm text-code-sm"><span class="text-primary font-semibold">busan-gaplog</span><span class="text-outline">/</span><span class="text-on-surface">audit</span></div><div class="h-3 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-1.5 px-2 py-0.5 border border-outline-variant bg-surface-container-low rounded-DEFAULT"><div class="w-1.5 h-1.5 rounded-full bg-surface-tint"></div><span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Solana Devnet</span></div></div><div class="flex items-center gap-space-lg"><nav class="flex items-center gap-space-lg" data-active-classes="text-primary font-semibold border-b border-primary"><a aria-current="page" class="transition-colors py-3 text-primary font-semibold border-b border-primary" data-path="audit-overview" href="#">Overview</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors py-3" data-path="slot-gaps" href="#">Slot Gaps</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors py-3" data-path="state-proofs" href="#">State Proofs</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors py-3" data-path="validator-divergence" href="#">Divergence</a></nav><div class="h-3 w-[1px] bg-outline-variant"></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-12 bg-surface min-h-screen"><div class="max-w-[960px] mx-auto px-margin py-space-lg"><div class="flex flex-col w-full text-on-surface">
+<div class="w-full max-w-[960px] mx-auto py-space-md">
+<!-- 1. Plain Header -->
+<header class="pb-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline justify-between">
+<h1 class="font-headline-lg text-headline-lg tracking-tight text-on-surface font-semibold m-0">구간 대조</h1>
+<span class="font-code-sm text-code-sm text-outline tracking-tight font-normal">대상 기기: Busan-Turbine-04 · 대조 일시: 2025-05-18 UTC</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant m-0">
+          원본 기록과 솔라나 데브넷 메모를 구간별로 맞춰 본 결과
+        </p>
+<div class="flex items-center gap-space-sm pt-1">
+<span class="font-code-sm text-code-sm text-outline">모의 데이터, 데브넷</span>
+<span class="text-outline-variant font-code-sm text-code-sm">/</span>
+<span class="font-code-sm text-code-sm text-outline">검증 방식: SHA-256 슬롯 합산 해시 일치 판별</span>
+</div>
+</div>
+</header>
+<div class="h-[1px] w-full bg-outline-variant"></div>
+<!-- 2. 24 Hourly Slots Timeline (Single-row vertical bars) -->
+<section class="py-space-lg">
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">시간대별 슬롯 수신 분포 (00:00 - 23:00)</span>
+<div class="flex items-center gap-space-md font-code-sm text-code-sm text-on-surface-variant">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-primary-container rounded-[2px] inline-block"></span>정상 (60/60)</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-secondary-fixed-dim rounded-[2px] inline-block"></span>일부 (35~50)</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 border border-dashed border-outline rounded-[2px] inline-block bg-transparent"></span>누락 (0)</span>
+</div>
+</div>
+<!-- Timeline Chart Strip -->
+<div class="w-full bg-surface-container-lowest p-space-md rounded-[6px] border border-outline-variant">
+<div class="grid grid-cols-24 gap-1.5 h-28 items-end w-full" style="grid-template-columns: repeat(24, minmax(0, 1fr));">
+<!-- 00 -->
+<div class="flex flex-col items-center justify-end h-full group" title="00:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">00</span>
+</div>
+<!-- 01 -->
+<div class="flex flex-col items-center justify-end h-full group" title="01:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">01</span>
+</div>
+<!-- 02 -->
+<div class="flex flex-col items-center justify-end h-full group" title="02:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">02</span>
+</div>
+<!-- 03 -->
+<div class="flex flex-col items-center justify-end h-full group" title="03:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">03</span>
+</div>
+<!-- 04 Partial (35/60) -->
+<div class="flex flex-col items-center justify-end h-full group" title="04:00 (35/60) - 일부 빠짐">
+<span class="font-code-sm text-[10px] text-secondary font-medium tabular-nums leading-none mb-1">35</span>
+<div class="w-full bg-secondary-fixed-dim rounded-[2px]" style="height: 58%;"></div>
+<span class="font-code-sm text-[11px] text-secondary font-medium tabular-nums mt-1.5 leading-none">04</span>
+</div>
+<!-- 05 -->
+<div class="flex flex-col items-center justify-end h-full group" title="05:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">05</span>
+</div>
+<!-- 06 -->
+<div class="flex flex-col items-center justify-end h-full group" title="06:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">06</span>
+</div>
+<!-- 07 -->
+<div class="flex flex-col items-center justify-end h-full group" title="07:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">07</span>
+</div>
+<!-- 08 Empty Dashed (0/60) -->
+<div class="flex flex-col items-center justify-end h-full group" title="08:00 (0/60) - 전부 빠짐">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">0</span>
+<div class="w-full border border-dashed border-outline-variant rounded-[2px] bg-transparent" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-outline tabular-nums mt-1.5 leading-none">08</span>
+</div>
+<!-- 09 -->
+<div class="flex flex-col items-center justify-end h-full group" title="09:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">09</span>
+</div>
+<!-- 10 -->
+<div class="flex flex-col items-center justify-end h-full group" title="10:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">10</span>
+</div>
+<!-- 11 Partial (50/60) -->
+<div class="flex flex-col items-center justify-end h-full group" title="11:00 (50/60) - 일부 빠짐">
+<span class="font-code-sm text-[10px] text-secondary font-medium tabular-nums leading-none mb-1">50</span>
+<div class="w-full bg-secondary-fixed-dim rounded-[2px]" style="height: 83%;"></div>
+<span class="font-code-sm text-[11px] text-secondary font-medium tabular-nums mt-1.5 leading-none">11</span>
+</div>
+<!-- 12 -->
+<div class="flex flex-col items-center justify-end h-full group" title="12:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">12</span>
+</div>
+<!-- 13 -->
+<div class="flex flex-col items-center justify-end h-full group" title="13:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">13</span>
+</div>
+<!-- 14 Empty Dashed (0/60) -->
+<div class="flex flex-col items-center justify-end h-full group" title="14:00 (0/60) - 전부 빠짐">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">0</span>
+<div class="w-full border border-dashed border-outline-variant rounded-[2px] bg-transparent" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-outline tabular-nums mt-1.5 leading-none">14</span>
+</div>
+<!-- 15 -->
+<div class="flex flex-col items-center justify-end h-full group" title="15:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">15</span>
+</div>
+<!-- 16 -->
+<div class="flex flex-col items-center justify-end h-full group" title="16:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">16</span>
+</div>
+<!-- 17 Partial (50/60) -->
+<div class="flex flex-col items-center justify-end h-full group" title="17:00 (50/60) - 일부 빠짐">
+<span class="font-code-sm text-[10px] text-secondary font-medium tabular-nums leading-none mb-1">50</span>
+<div class="w-full bg-secondary-fixed-dim rounded-[2px]" style="height: 83%;"></div>
+<span class="font-code-sm text-[11px] text-secondary font-medium tabular-nums mt-1.5 leading-none">17</span>
+</div>
+<!-- 18 -->
+<div class="flex flex-col items-center justify-end h-full group" title="18:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">18</span>
+</div>
+<!-- 19 -->
+<div class="flex flex-col items-center justify-end h-full group" title="19:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">19</span>
+</div>
+<!-- 20 -->
+<div class="flex flex-col items-center justify-end h-full group" title="20:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">20</span>
+</div>
+<!-- 21 -->
+<div class="flex flex-col items-center justify-end h-full group" title="21:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">21</span>
+</div>
+<!-- 22 -->
+<div class="flex flex-col items-center justify-end h-full group" title="22:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">22</span>
+</div>
+<!-- 23 -->
+<div class="flex flex-col items-center justify-end h-full group" title="23:00 (60/60)">
+<span class="font-code-sm text-[10px] text-outline tabular-nums leading-none mb-1">60</span>
+<div class="w-full bg-primary-container rounded-[2px]" style="height: 100%;"></div>
+<span class="font-code-sm text-[11px] text-on-surface-variant tabular-nums mt-1.5 leading-none">23</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Three Plain Figures in One Single Line (No cards, plain text & clean rules) -->
+<div class="h-[1px] w-full bg-outline-variant"></div>
+<section class="py-space-md">
+<div class="flex items-center justify-between font-body-md text-body-md">
+<div class="flex items-baseline gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">구간 대조 판정:</span>
+<span class="font-code-md text-code-md text-on-surface font-semibold tabular-nums">일치 24 / 불일치 0</span>
+</div>
+<div class="h-3 w-[1px] bg-outline-variant"></div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">원장에 기록된 전력량:</span>
+<span class="font-code-md text-code-md text-primary font-semibold tabular-nums">확정분 2,060.746 kWh</span>
+</div>
+<div class="h-3 w-[1px] bg-outline-variant"></div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">미기록 또는 부분 수신:</span>
+<span class="font-code-md text-code-md text-secondary font-semibold tabular-nums">보류 5구간 214.743 kWh</span>
+</div>
+</div>
+</section>
+<div class="h-[1px] w-full bg-outline-variant"></div>
+<!-- 4. Dense Table of 24 Rows (00:00 to 23:00) -->
+<section class="pt-space-md pb-space-xl">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold uppercase tracking-wider">시간대별 세부 대조 장부</span>
+<span class="font-code-sm text-code-sm text-outline tabular-nums">(총 24개 구간)</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">모든 해시는 Solana Memo 프로그램(MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr)에 고정됨</span>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full border-collapse text-left font-body-md text-body-md">
+<thead>
+<tr class="border-b border-outline text-on-surface-variant font-label-sm text-label-sm">
+<th class="py-2 pr-3 font-medium w-16">시각</th>
+<th class="py-2 px-3 font-medium w-24">상태</th>
+<th class="py-2 px-3 font-medium w-24 text-right">받은 개수</th>
+<th class="py-2 px-4 font-medium w-32 text-right">합계 kWh</th>
+<th class="py-2 px-4 font-medium w-36">지문 앞 12자리</th>
+<th class="py-2 px-3 font-medium w-20 text-center">대조 결과</th>
+<th class="py-2 pl-3 font-medium text-right">거래 링크</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-code-sm text-code-sm">
+<!-- 00:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">00:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">94.120 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x4a9f82c1b4e0</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">5KtP...9mQx ↗</a>
+</td>
+</tr>
+<!-- 01:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">01:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">91.804 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x9d3a1f8c7e2b</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">4HwR...1pLz ↗</a>
+</td>
+</tr>
+<!-- 02:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">02:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">88.552 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x1b7e4d8f2a9c</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">2MvQ...8kYw ↗</a>
+</td>
+</tr>
+<!-- 03:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">03:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">90.231 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x7c2b5e9a4d1f</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">8PnL...4sKj ↗</a>
+</td>
+</tr>
+<!-- 04:00 (PARTIAL) -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="py-1.5 pr-3 text-secondary font-medium tabular-nums">04:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-secondary font-medium">일부 빠짐</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-secondary font-medium">35/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-secondary">52.310 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x3f8a2c1d9b7e</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-secondary hover:underline underline-offset-2" href="#">3ZxW...7uNm ↗</a>
+</td>
+</tr>
+<!-- 05:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">05:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">93.441 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x6d1f8a4b2c9e</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">9KpT...2hRv ↗</a>
+</td>
+</tr>
+<!-- 06:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">06:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">97.809 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x8e2b7c1a9f4d</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">7YnM...5dEw ↗</a>
+</td>
+</tr>
+<!-- 07:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">07:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">104.225 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x2a9f4d8e7c1b</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">1QrV...9cBm ↗</a>
+</td>
+</tr>
+<!-- 08:00 (EMPTY) -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container transition-colors">
+<td class="py-1.5 pr-3 text-outline tabular-nums">08:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-outline">전부 빠짐</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-outline">0/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-outline">0.000 kWh</td>
+<td class="py-1.5 px-4 text-outline font-mono">—</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-outline">일치 (공구간)</td>
+<td class="py-1.5 pl-3 text-right">
+<span class="text-outline">—</span>
+</td>
+</tr>
+<!-- 09:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">09:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">112.540 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x5c7e1b9a2d4f</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">6LmN...3tYq ↗</a>
+</td>
+</tr>
+<!-- 10:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">10:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">109.118 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x4d8f2a9c1b7e</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">8TzP...6vFk ↗</a>
+</td>
+</tr>
+<!-- 11:00 (PARTIAL) -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="py-1.5 pr-3 text-secondary font-medium tabular-nums">11:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-secondary font-medium">일부 빠짐</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-secondary font-medium">50/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-secondary">86.200 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x9a4d1f7c2b5e</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-secondary hover:underline underline-offset-2" href="#">2XkL...4mPr ↗</a>
+</td>
+</tr>
+<!-- 12:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">12:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">118.902 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x1a9f82c7e4d8</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">9UvM...1wQy ↗</a>
+</td>
+</tr>
+<!-- 13:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">13:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">115.340 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x7e2b5a4d1f8c</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">4RtX...8jKp ↗</a>
+</td>
+</tr>
+<!-- 14:00 (EMPTY) -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container transition-colors">
+<td class="py-1.5 pr-3 text-outline tabular-nums">14:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-outline">전부 빠짐</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-outline">0/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-outline">0.000 kWh</td>
+<td class="py-1.5 px-4 text-outline font-mono">—</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-outline">일치 (공구간)</td>
+<td class="py-1.5 pl-3 text-right">
+<span class="text-outline">—</span>
+</td>
+</tr>
+<!-- 15:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">15:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">108.621 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x2d4f8a9c1b7e</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">7NbL...2vTc ↗</a>
+</td>
+</tr>
+<!-- 16:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">16:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">101.450 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x8a1b7e2c5d4f</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">5JkM...9xQw ↗</a>
+</td>
+</tr>
+<!-- 17:00 (PARTIAL) -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="py-1.5 pr-3 text-secondary font-medium tabular-nums">17:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-secondary font-medium">일부 빠짐</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-secondary font-medium">50/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-secondary">76.233 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x3c9f7e1a8d2b</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-secondary hover:underline underline-offset-2" href="#">1WzK...3pLv ↗</a>
+</td>
+</tr>
+<!-- 18:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">18:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">96.712 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x6b4d8f2a1c9e</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">8PqR...5mZn ↗</a>
+</td>
+</tr>
+<!-- 19:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">19:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">94.301 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x4f1a7e9c2b8d</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">3DsT...7uKp ↗</a>
+</td>
+</tr>
+<!-- 20:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">20:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">89.920 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x7d2c8f1a4e9b</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">6YxL...4vRt ↗</a>
+</td>
+</tr>
+<!-- 21:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">21:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">88.115 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x5e9b1a7d2c4f</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">9KvP...1sMw ↗</a>
+</td>
+</tr>
+<!-- 22:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">22:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">85.404 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x1f8c2b7e9a4d</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">2HnB...8zQj ↗</a>
+</td>
+</tr>
+<!-- 23:00 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-1.5 pr-3 text-on-surface tabular-nums">23:00</td>
+<td class="py-1.5 px-3 font-body-sm text-body-sm text-primary font-medium">정상</td>
+<td class="py-1.5 px-3 text-right tabular-nums text-on-surface">60/60</td>
+<td class="py-1.5 px-4 text-right tabular-nums text-on-surface">82.350 kWh</td>
+<td class="py-1.5 px-4 text-on-surface-variant font-mono">0x3b7e4d1f8a2c</td>
+<td class="py-1.5 px-3 text-center font-body-sm text-body-sm text-primary">일치</td>
+<td class="py-1.5 pl-3 text-right">
+<a class="text-primary hover:underline underline-offset-2" href="#">5WvQ...6mLy ↗</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pt-space-md flex items-center justify-between font-code-sm text-code-sm text-outline border-t border-outline-variant mt-space-sm">
+<span>총계: 24개 구간 중 19구간 완결 · 3구간 부분 수신 · 2구간 미기록</span>
+<span>최종 감사 확인: 2025-05-18 23:59:59 UTC</span>
+</div>
+</section>
+</div>
+</div></div></main><footer class="w-full bg-surface border-t border-outline-variant py-space-md"><div class="max-w-[960px] mx-auto px-margin flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm"><div>busan-gaplog v0.4.12-alpha · ledger verifier daemon</div><div class="flex items-center gap-space-md"><span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>synced: slot #29481903</span><span class="text-outline">|</span><span>epoch 674</span></div></div></footer></body></html>
