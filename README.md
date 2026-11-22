@@ -70,6 +70,13 @@ node verify.js   # 대조와 확정분, 보류분 합계
 | `LEDGER` | `data/ledger.json` | 거래 서명을 적는 파일 |
 | `PACE_MS` | 0 | 요청 사이 대기 시간. 공개 노드가 요청을 막으면 4000 정도로 둔다 |
 
+대조 결과를 화면으로 보려면 [`view.html`](view.html)을 내려받아 브라우저로 엽니다. 파일 하나로 되어 있고 외부 자원을 불러오지 않습니다. 다시 만들 때는 아래처럼 합니다.
+
+```bash
+PACE_MS=4000 OUT=data/verify.json node verify.js   # 대조 결과를 파일로 남긴다
+node build-view.js                                 # view.html 생성
+```
+
 네트워크 없이 보려면 `solana-test-validator --ledger test-ledger --reset`을 띄우고 `RPC=http://127.0.0.1:8899 LEDGER=data/ledger-local.json`으로 실행합니다.
 
 ## 파일
@@ -81,6 +88,8 @@ node verify.js   # 대조와 확정분, 보류분 합계
 | `anchor.js` | 구간 요약을 메모 거래로 기록. 끊겨도 이어서 기록 |
 | `verify.js` | 체인의 메모를 읽어 원본과 대조 |
 | `build-figure.js` | 위 그림을 `data/raw.json`에서 생성 |
+| `build-view.js` | 구간별 대조 결과를 한 화면에 보여 주는 `view.html` 생성 |
+| `DESIGN.md` | 그림과 화면에 쓰는 색, 글자, 모서리 값 |
 
 ## 한계
 

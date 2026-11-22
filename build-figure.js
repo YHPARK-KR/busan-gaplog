@@ -21,10 +21,10 @@ function svg(c) {
     const x = PAD + i * slot + 4, cx = x + bw / 2;
     const h = Math.round((r.got / EXPECTED) * BAR_H);
     if (r.st === "MISSING") {
-      p.push(`<rect x="${x + 0.5}" y="${TOP + 0.5}" width="${bw - 1}" height="${BAR_H - 1}" rx="2" fill="none" stroke="${c.muted}" stroke-dasharray="3 3"/>`);
+      p.push(`<rect x="${x + 0.5}" y="${TOP + 0.5}" width="${bw - 1}" height="${BAR_H - 1}" rx="2" fill="none" stroke="${c.muted}" stroke-dasharray="4 4"/>`);
     } else {
       if (r.st === "PARTIAL") p.push(`<rect x="${x + 0.5}" y="${TOP + 0.5}" width="${bw - 1}" height="${BAR_H - 1}" rx="2" fill="none" stroke="${c.line}"/>`);
-      p.push(`<rect x="${x}" y="${TOP + BAR_H - h}" width="${bw}" height="${h}" rx="2" fill="${r.st === "OK" ? c.primary : c["primary-tint"]}"/>`);
+      p.push(`<rect x="${x}" y="${TOP + BAR_H - h}" width="${bw}" height="${h}" rx="2" fill="${r.st === "OK" ? c.primary : c.partial}"/>`);
     }
     const strong = r.st !== "OK";
     p.push(`<text x="${cx}" y="${TOP - 10}" text-anchor="middle" font-size="${strong ? 13 : 11}" font-weight="${strong ? 600 : 400}" fill="${strong ? c.ink : c.muted}">${r.got}</text>`);
@@ -34,8 +34,8 @@ function svg(c) {
   let lx = PAD + 4;
   const legend = [["OK", "정상 19구간"], ["PARTIAL", "일부 빠짐 3구간"], ["MISSING", "전부 빠짐 2구간"]];
   for (const [st, label] of legend) {
-    if (st === "MISSING") p.push(`<rect x="${lx + 0.5}" y="${ly - 10.5}" width="11" height="11" rx="2" fill="none" stroke="${c.muted}" stroke-dasharray="3 3"/>`);
-    else p.push(`<rect x="${lx}" y="${ly - 11}" width="12" height="12" rx="2" fill="${st === "OK" ? c.primary : c["primary-tint"]}"/>`);
+    if (st === "MISSING") p.push(`<rect x="${lx + 0.5}" y="${ly - 10.5}" width="11" height="11" rx="2" fill="none" stroke="${c.muted}" stroke-dasharray="4 4"/>`);
+    else p.push(`<rect x="${lx}" y="${ly - 11}" width="12" height="12" rx="2" fill="${st === "OK" ? c.primary : c.partial}"/>`);
     p.push(`<text x="${lx + 19}" y="${ly}" font-size="13" font-weight="500" fill="${c.ink}">${label}</text>`);
     lx += 150;
   }
@@ -46,7 +46,7 @@ function svg(c) {
 
 const count = (st) => rows.filter((r) => r.st === st).length;
 if (count("OK") !== 19 || count("PARTIAL") !== 3 || count("MISSING") !== 2) throw new Error("범례 숫자와 데이터가 다르다");
-const pick = (prefix) => Object.fromEntries(["primary", "primary-tint", "surface", "ink", "muted", "line"].map((k) => [k, colors[prefix + k]]));
+const pick = (prefix) => Object.fromEntries(["primary", "partial", "surface", "ink", "muted", "line"].map((k) => [k, colors[prefix + k]]));
 fs.mkdirSync("docs", { recursive: true });
 fs.writeFileSync("docs/windows-light.svg", svg(pick("")));
 fs.writeFileSync("docs/windows-dark.svg", svg(pick("dark-")));

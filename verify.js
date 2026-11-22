@@ -21,6 +21,7 @@ function memoOf(tx) {
   const raw = JSON.parse(fs.readFileSync(process.argv[2] || "data/raw.json"));
   const local = summarize(raw.device, raw.start, raw.hours, raw.records);
   let match = 0, mismatch = 0, confirmed = 0, heldWindows = 0, heldPartial = 0;
+  const rows = [];
   for (const w of local) {
     const e = ledger.entries.find((x) => x.from === w.from);
     const hh = new Date(w.from * 1000).toISOString().slice(11, 16);
@@ -30,11 +31,14 @@ function memoOf(tx) {
     const onchain = tx && memoOf(tx) ? JSON.parse(memoOf(tx)) : null;
     const same = onchain && onchain.h === w.h && onchain.got === w.got && onchain.st === w.st && onchain.from === w.from;
     same ? match++ : mismatch++;
+    rows.push({ from: w.from, same: !!same });
     if (w.st === "OK") confirmed += w.sum; else { heldWindows++; heldPartial += w.sum; }
     console.log(hh, (LABEL[w.st] + "      ").slice(0, 6), `${w.got}/${w.exp}`.padStart(5), same ? "일치" : "불일치", e.sig.slice(0, 12) + "…");
   }
   console.log(`\n대조: 일치 ${match} / 불일치 ${mismatch}`);
   console.log(`확정분(정상 구간 합): ${confirmed.toFixed(3)} kWh`);
   console.log(`보류: ${heldWindows}개 구간 (그 구간에 실제로 받은 값의 합 ${heldPartial.toFixed(3)} kWh)`);
+  // OUT을 주면 대조 결과를 파일로 남긴다(build-view.js가 읽는다)
+  if (process.env.OUT) fs.writeFileSync(process.env.OUT, JSON.stringify({ checkedAt: new Date().toISOString(), rpc: RPC, match, mismatch, rows }, null, 1));
   process.exit(mismatch ? 1 : 0);
 })().catch((e) => { console.error("실패:", e.message); process.exit(2); });

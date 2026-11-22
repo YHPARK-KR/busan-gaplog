@@ -1,86 +1,86 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 262" width="880" height="262" role="img" aria-label="24개 구간의 받은 기록 수: 정상 19, 일부 빠짐 3, 전부 빠짐 2" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" style="font-variant-numeric: tabular-nums">
-<rect width="880" height="262" rx="6" fill="#151B18"/>
-<line x1="28" y1="166.5" x2="852" y2="166.5" stroke="#303A35"/>
-<rect x="32" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="45.16666666666667" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="45.16666666666667" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">00</text>
-<rect x="66.33333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="79.50000000000001" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="79.50000000000001" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">01</text>
-<rect x="100.66666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="113.83333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="113.83333333333334" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">02</text>
-<rect x="135.5" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#303A35"/>
-<rect x="135" y="96" width="26.333333333333336" height="70" rx="2" fill="#2C6B5F"/>
-<text x="148.16666666666666" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E4EAE6">35</text>
-<text x="148.16666666666666" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">03</text>
-<rect x="169.33333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="182.5" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="182.5" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">04</text>
-<rect x="203.66666666666669" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="216.83333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="216.83333333333334" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">05</text>
-<rect x="238" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="251.16666666666666" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="251.16666666666666" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">06</text>
-<rect x="272.33333333333337" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="285.50000000000006" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="285.50000000000006" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">07</text>
-<rect x="306.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="319.83333333333337" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="319.83333333333337" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">08</text>
-<rect x="341.5" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#9BA8A1" stroke-dasharray="3 3"/>
-<text x="354.1666666666667" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E4EAE6">0</text>
-<text x="354.1666666666667" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">09</text>
-<rect x="375.83333333333337" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#9BA8A1" stroke-dasharray="3 3"/>
-<text x="388.50000000000006" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E4EAE6">0</text>
-<text x="388.50000000000006" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">10</text>
-<rect x="409.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="422.83333333333337" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="422.83333333333337" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">11</text>
-<rect x="444" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="457.1666666666667" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="457.1666666666667" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">12</text>
-<rect x="478.33333333333337" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="491.50000000000006" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="491.50000000000006" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">13</text>
-<rect x="512.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="525.8333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="525.8333333333334" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">14</text>
-<rect x="547" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="560.1666666666666" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="560.1666666666666" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">15</text>
-<rect x="581.3333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="594.5" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="594.5" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">16</text>
-<rect x="616.1666666666667" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#303A35"/>
-<rect x="615.6666666666667" y="66" width="26.333333333333336" height="100" rx="2" fill="#2C6B5F"/>
-<text x="628.8333333333334" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E4EAE6">50</text>
-<text x="628.8333333333334" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">17</text>
-<rect x="650.5" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#303A35"/>
-<rect x="650" y="66" width="26.333333333333336" height="100" rx="2" fill="#2C6B5F"/>
-<text x="663.1666666666666" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E4EAE6">50</text>
-<text x="663.1666666666666" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">18</text>
-<rect x="684.3333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="697.5" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="697.5" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">19</text>
-<rect x="718.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="731.8333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="731.8333333333334" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">20</text>
-<rect x="753" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="766.1666666666666" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="766.1666666666666" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">21</text>
-<rect x="787.3333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="800.5" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="800.5" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">22</text>
-<rect x="821.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#57B8A4"/>
-<text x="834.8333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#9BA8A1">60</text>
-<text x="834.8333333333334" y="184" text-anchor="middle" font-size="11" fill="#9BA8A1">23</text>
-<rect x="32" y="225" width="12" height="12" rx="2" fill="#57B8A4"/>
-<text x="51" y="236" font-size="13" font-weight="500" fill="#E4EAE6">정상 19구간</text>
-<rect x="182" y="225" width="12" height="12" rx="2" fill="#2C6B5F"/>
-<text x="201" y="236" font-size="13" font-weight="500" fill="#E4EAE6">일부 빠짐 3구간</text>
-<rect x="332.5" y="225.5" width="11" height="11" rx="2" fill="none" stroke="#9BA8A1" stroke-dasharray="3 3"/>
-<text x="351" y="236" font-size="13" font-weight="500" fill="#E4EAE6">전부 빠짐 2구간</text>
-<text x="848" y="236" text-anchor="end" font-size="11" fill="#9BA8A1">막대 위 숫자는 받은 기록 수(구간마다 60개가 와야 한다), 아래는 시각(UTC)</text>
+<rect width="880" height="262" rx="6" fill="#24332F"/>
+<line x1="28" y1="166.5" x2="852" y2="166.5" stroke="#3C4D48"/>
+<rect x="32" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="45.16666666666667" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="45.16666666666667" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">00</text>
+<rect x="66.33333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="79.50000000000001" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="79.50000000000001" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">01</text>
+<rect x="100.66666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="113.83333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="113.83333333333334" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">02</text>
+<rect x="135.5" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#3C4D48"/>
+<rect x="135" y="96" width="26.333333333333336" height="70" rx="2" fill="#3A6D68"/>
+<text x="148.16666666666666" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E3F5EE">35</text>
+<text x="148.16666666666666" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">03</text>
+<rect x="169.33333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="182.5" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="182.5" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">04</text>
+<rect x="203.66666666666669" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="216.83333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="216.83333333333334" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">05</text>
+<rect x="238" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="251.16666666666666" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="251.16666666666666" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">06</text>
+<rect x="272.33333333333337" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="285.50000000000006" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="285.50000000000006" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">07</text>
+<rect x="306.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="319.83333333333337" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="319.83333333333337" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">08</text>
+<rect x="341.5" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#A9BDB6" stroke-dasharray="4 4"/>
+<text x="354.1666666666667" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E3F5EE">0</text>
+<text x="354.1666666666667" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">09</text>
+<rect x="375.83333333333337" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#A9BDB6" stroke-dasharray="4 4"/>
+<text x="388.50000000000006" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E3F5EE">0</text>
+<text x="388.50000000000006" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">10</text>
+<rect x="409.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="422.83333333333337" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="422.83333333333337" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">11</text>
+<rect x="444" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="457.1666666666667" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="457.1666666666667" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">12</text>
+<rect x="478.33333333333337" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="491.50000000000006" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="491.50000000000006" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">13</text>
+<rect x="512.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="525.8333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="525.8333333333334" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">14</text>
+<rect x="547" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="560.1666666666666" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="560.1666666666666" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">15</text>
+<rect x="581.3333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="594.5" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="594.5" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">16</text>
+<rect x="616.1666666666667" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#3C4D48"/>
+<rect x="615.6666666666667" y="66" width="26.333333333333336" height="100" rx="2" fill="#3A6D68"/>
+<text x="628.8333333333334" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E3F5EE">50</text>
+<text x="628.8333333333334" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">17</text>
+<rect x="650.5" y="46.5" width="25.333333333333336" height="119" rx="2" fill="none" stroke="#3C4D48"/>
+<rect x="650" y="66" width="26.333333333333336" height="100" rx="2" fill="#3A6D68"/>
+<text x="663.1666666666666" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#E3F5EE">50</text>
+<text x="663.1666666666666" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">18</text>
+<rect x="684.3333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="697.5" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="697.5" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">19</text>
+<rect x="718.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="731.8333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="731.8333333333334" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">20</text>
+<rect x="753" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="766.1666666666666" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="766.1666666666666" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">21</text>
+<rect x="787.3333333333334" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="800.5" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="800.5" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">22</text>
+<rect x="821.6666666666667" y="46" width="26.333333333333336" height="120" rx="2" fill="#93D2CE"/>
+<text x="834.8333333333334" y="36" text-anchor="middle" font-size="11" font-weight="400" fill="#A9BDB6">60</text>
+<text x="834.8333333333334" y="184" text-anchor="middle" font-size="11" fill="#A9BDB6">23</text>
+<rect x="32" y="225" width="12" height="12" rx="2" fill="#93D2CE"/>
+<text x="51" y="236" font-size="13" font-weight="500" fill="#E3F5EE">정상 19구간</text>
+<rect x="182" y="225" width="12" height="12" rx="2" fill="#3A6D68"/>
+<text x="201" y="236" font-size="13" font-weight="500" fill="#E3F5EE">일부 빠짐 3구간</text>
+<rect x="332.5" y="225.5" width="11" height="11" rx="2" fill="none" stroke="#A9BDB6" stroke-dasharray="4 4"/>
+<text x="351" y="236" font-size="13" font-weight="500" fill="#E3F5EE">전부 빠짐 2구간</text>
+<text x="848" y="236" text-anchor="end" font-size="11" fill="#A9BDB6">막대 위 숫자는 받은 기록 수(구간마다 60개가 와야 한다), 아래는 시각(UTC)</text>
 </svg>

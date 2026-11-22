@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>구간 대조 | busan-gaplog</title>
+<!-- design-basis: DESIGN.md (Stitch 프로젝트 Busan GapLog Audit View) -->
+<style>
+:root{--primary:#165B58;--partial:#7BAEA8;--partial-surface:#DDECE9;--surface:#F4F6F4;--well:#EBEFEA;--ink:#1B2A26;--muted:#526660;--line:#D8E0DC;--rule:#C8D2CD}
+*{box-sizing:border-box}
+html{background:var(--surface);color:var(--ink);font:13px/1.55 Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;font-variant-numeric:tabular-nums;scrollbar-color:var(--rule) var(--surface);caret-color:var(--primary)}
+::selection{background:var(--partial-surface);color:var(--ink)}
+body{margin:0;padding:24px 16px 48px}
+main{max-width:960px;margin:0 auto;border:1px solid var(--rule);border-radius:6px}
+header,section{padding:16px 24px}
+section{border-top:1px solid var(--rule)}
+h1{font-size:20px;line-height:1.4;font-weight:600;margin:0}
+h2{font-size:16px;line-height:1.5;font-weight:600;margin:8px 0 12px}
+p{margin:4px 0 0}
+.muted{color:var(--muted)}
+a{color:var(--primary);text-underline-offset:3px}
+a:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+.mono{font:12px/1.5 "JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+.timeline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(24,1fr);gap:6px}
+.slot a{display:flex;flex-direction:column;align-items:stretch;text-align:center;text-decoration:none;color:var(--muted);font-size:11px}
+.slot .track{height:120px;display:flex;align-items:flex-end;border-radius:2px;margin:4px 0}
+.slot .fill{width:100%;background:var(--primary);border-radius:2px}
+.slot.partial .track{outline:1px solid var(--line);outline-offset:-1px}
+.slot.partial .fill{background:var(--partial)}
+.slot.missing .track{border:1px dashed var(--muted)}
+.slot.partial .n,.slot.missing .n{color:var(--ink);font-weight:600;font-size:13px;line-height:16px}
+.slot .n{line-height:16px}
+.slot a:hover .track,.slot a:focus-visible .track{outline:1px solid var(--ink);outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 24px;margin:12px 0 0;padding:0;list-style:none;color:var(--muted);font-size:12px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--primary)}
+.legend .partial i{background:var(--partial)}
+.legend .missing i{background:none;border:1px dashed var(--muted)}
+.figures{display:flex;flex-wrap:wrap;gap:8px 0;margin:0}
+.figures div{padding-right:24px;margin-right:24px;border-right:1px solid var(--line)}
+.figures div:last-child{border:0;margin:0;padding:0}
+.figures dt{color:var(--muted);font-size:11px;font-weight:500}
+.figures dd{margin:0;font-size:16px;font-weight:600}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th{text-align:left;font-size:11px;font-weight:500;color:var(--muted);border-bottom:1px solid var(--rule);padding:6px 8px}
+td{height:34px;padding:0 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover,tbody tr:target{background:var(--well)}
+.r{text-align:right}
+.tag{display:inline-block;padding:0 6px;border-radius:2px;border:1px solid var(--primary);color:var(--primary);font-size:12px;line-height:20px}
+.tag.partial{border-color:var(--partial);color:var(--muted)}
+.tag.missing{border:1px dashed var(--muted);color:var(--muted)}
+footer{max-width:960px;margin:12px auto 0;color:var(--muted);font-size:12px}
+@media (max-width:720px){body{padding:0 0 32px}main{border-left:0;border-right:0;border-radius:0}header,section{padding:16px}.timeline{gap:2px}.slot .h,.slot .n{font-size:9px}.slot.partial .n,.slot.missing .n{font-size:10px}.figures div{border:0;margin:0;padding-right:24px}footer{padding:0 16px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>구간 대조</h1>
+<p>원본 기록과 솔라나 데브넷 메모를 구간별로 맞춰 본 결과입니다.</p>
+<p class="muted">모의 데이터, 데브넷. 설비 MOCK-ESD-01, 2026-11-20 하루(UTC), 대조 시각 2026-11-22 05:03 UTC</p>
+</header>
+<section>
+<h2>구간별 받은 기록 수</h2>
+<ol class="timeline">
+<li class="slot ok"><a href="#h0" title="00:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">00</span></a></li>
+<li class="slot ok"><a href="#h1" title="01:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">01</span></a></li>
+<li class="slot ok"><a href="#h2" title="02:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">02</span></a></li>
+<li class="slot partial"><a href="#h3" title="03:00 일부 빠짐 35/60"><span class="n">35</span><span class="track"><span class="fill" style="height:58%"></span></span><span class="h">03</span></a></li>
+<li class="slot ok"><a href="#h4" title="04:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">04</span></a></li>
+<li class="slot ok"><a href="#h5" title="05:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">05</span></a></li>
+<li class="slot ok"><a href="#h6" title="06:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">06</span></a></li>
+<li class="slot ok"><a href="#h7" title="07:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">07</span></a></li>
+<li class="slot ok"><a href="#h8" title="08:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">08</span></a></li>
+<li class="slot missing"><a href="#h9" title="09:00 전부 빠짐 0/60"><span class="n">0</span><span class="track"><span class="fill" style="height:0%"></span></span><span class="h">09</span></a></li>
+<li class="slot missing"><a href="#h10" title="10:00 전부 빠짐 0/60"><span class="n">0</span><span class="track"><span class="fill" style="height:0%"></span></span><span class="h">10</span></a></li>
+<li class="slot ok"><a href="#h11" title="11:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">11</span></a></li>
+<li class="slot ok"><a href="#h12" title="12:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">12</span></a></li>
+<li class="slot ok"><a href="#h13" title="13:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">13</span></a></li>
+<li class="slot ok"><a href="#h14" title="14:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">14</span></a></li>
+<li class="slot ok"><a href="#h15" title="15:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">15</span></a></li>
+<li class="slot ok"><a href="#h16" title="16:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">16</span></a></li>
+<li class="slot partial"><a href="#h17" title="17:00 일부 빠짐 50/60"><span class="n">50</span><span class="track"><span class="fill" style="height:83%"></span></span><span class="h">17</span></a></li>
+<li class="slot partial"><a href="#h18" title="18:00 일부 빠짐 50/60"><span class="n">50</span><span class="track"><span class="fill" style="height:83%"></span></span><span class="h">18</span></a></li>
+<li class="slot ok"><a href="#h19" title="19:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">19</span></a></li>
+<li class="slot ok"><a href="#h20" title="20:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">20</span></a></li>
+<li class="slot ok"><a href="#h21" title="21:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">21</span></a></li>
+<li class="slot ok"><a href="#h22" title="22:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">22</span></a></li>
+<li class="slot ok"><a href="#h23" title="23:00 정상 60/60"><span class="n">60</span><span class="track"><span class="fill" style="height:100%"></span></span><span class="h">23</span></a></li>
+</ol>
+<ul class="legend">
+<li><i></i>정상 19구간 (60/60)</li>
+<li class="partial"><i></i>일부 빠짐 3구간</li>
+<li class="missing"><i></i>전부 빠짐 2구간</li>
+</ul>
+</section>
+<section>
+<dl class="figures">
+<div><dt>원본과 체인 대조</dt><dd>일치 24 / 불일치 0</dd></div>
+<div><dt>확정분 (정상 구간 합)</dt><dd>2,060.746 kWh</dd></div>
+<div><dt>보류 5구간 (받은 값만 더한 합)</dt><dd>214.743 kWh</dd></div>
+</dl>
+</section>
+<section>
+<h2>구간 24개</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>시각</th><th>상태</th><th class="r">받은 개수</th><th class="r">합계 kWh</th><th>지문 앞 12자리</th><th>대조</th><th>거래</th></tr></thead>
+<tbody>
+<tr id="h0">
+<td>00:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">111.714</td>
+<td class="mono" title="7b315cf5fc714dcbc749f5e5f4f2640c6b05f571ac9a49a90b1e81a105d21849">7b315cf5fc71</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/2K2ixG5D4zjcuY6uoi8hp21piXLzqbF7y2f1DTbQUcdQTESnQq1xk5V8d13mjMeFk7ot186UxpKXB5mFehPhKMak?cluster=devnet">2K2ixG5D…</a></td>
+</tr>
+<tr id="h1">
+<td>01:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">117.257</td>
+<td class="mono" title="7a00df87b613442a1d7e9ca4b737c08a52f7473623e52bcebf7cbe7e4ba350c5">7a00df87b613</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/4sX7xJU9QN33KTVfoQvbuFRozmSMmF2feDoLJyRUvqsLJLeC5Tb4Y1g8V31YWRtfgiyk62tgjpY3CHeZLcLooj9b?cluster=devnet">4sX7xJU9…</a></td>
+</tr>
+<tr id="h2">
+<td>02:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">122.925</td>
+<td class="mono" title="44dae96b4c90b97d25f191ab4dd69c58540a4ccd691a059735e5b66118707c4b">44dae96b4c90</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/35HR4cv3mswN7dBMSyV3PCac7y2G6mLH9i6vkP5sfKvL5UasKgbEQ8f3d6KVa36gVgWecE8REsJrazNnVTKho9sd?cluster=devnet">35HR4cv3…</a></td>
+</tr>
+<tr id="h3">
+<td>03:00</td>
+<td><span class="tag partial">일부 빠짐</span></td>
+<td class="r">35/60</td>
+<td class="r">74.252</td>
+<td class="mono" title="33bffe795495061051e9549ecd7caf15f07ecda96ad22e5e2c4d6fb7b6897348">33bffe795495</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/5o8o8AsoQHnEit5pXKGeCrZQwXF4wpAbzeHXHmgh6HCtozNnEwebW4dUVaX8yT16Lfe8mMJGD2sdxQp3GmfxhkmN?cluster=devnet">5o8o8Aso…</a></td>
+</tr>
+<tr id="h4">
+<td>04:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">129.550</td>
+<td class="mono" title="b9212d6135929b892188486c71237314265c6b7db97a73994632e05573af63af">b9212d613592</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/sQrWxi1GjTtdBU6w8HHugmRiYmyscBHvGcMqbTDSF7JpQuE3sajzXXfRURUUv5weyN391coDoysFRCrCTEuTMDA?cluster=devnet">sQrWxi1G…</a></td>
+</tr>
+<tr id="h5">
+<td>05:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">132.444</td>
+<td class="mono" title="15f05e81c63d6adfb08f921f72ea57696fb861e7a24649638fcd0bba0b9b47ce">15f05e81c63d</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/3TwBU9BTfCx7BetTTCAanAzCs8JXMJ8tYKiSq5s96gT9gaokeaGUPw7nkom8shW3d7Yf6hza1XXmX78uMX8K2eH5?cluster=devnet">3TwBU9BT…</a></td>
+</tr>
+<tr id="h6">
+<td>06:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">131.803</td>
+<td class="mono" title="bbeaf9972239e8f8abb4d0a02bea7cc72cae1369a54a5683879ae45e3710c39e">bbeaf9972239</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/4ozvYtRMgDTC6s1wNbjBM1akzUCWqaf1smUBxpWaDepx82GnbGeY5BssZkqnD6kpLKgwYVV3hGkGxYJXtrxCbx67?cluster=devnet">4ozvYtRM…</a></td>
+</tr>
+<tr id="h7">
+<td>07:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">129.727</td>
+<td class="mono" title="a8d9bea9a1dbdcd6f74cec62da8130f1f07c6fc41fdeba66ff22674902e6f7d5">a8d9bea9a1db</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/5Ff7NuxFeXyBkcCtVXYe28H4gpdTwwqeVBMcvtUtYjmhAzrc62NCEtWVPKskJHi7Fqmq27JV9u3tgmvzDc13gZM8?cluster=devnet">5Ff7NuxF…</a></td>
+</tr>
+<tr id="h8">
+<td>08:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">126.821</td>
+<td class="mono" title="7f025f06b6d462ed52c0a5373a9b8fbcbe745e91588a37bb170832bebda6c548">7f025f06b6d4</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/4gcYUxKxLiv6BJeNvsL7WH6QxViwQPAe3Ccg3Fpaa9ajBmXb9xuSAPDmUkZaDxyYMFP3nzNNVHjzYSXiNKRP6mfM?cluster=devnet">4gcYUxKx…</a></td>
+</tr>
+<tr id="h9">
+<td>09:00</td>
+<td><span class="tag missing">전부 빠짐</span></td>
+<td class="r">0/60</td>
+<td class="r">0.000</td>
+<td class="mono" title="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">e3b0c44298fc</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/3WZ4NPrMZD7zpFzfwG4FUnHXqDkMk941SZ7ahgmXimdkQX6FSy1HaEyBNVnr1nNuZWhJFTJSkdVRtsJpWhZxWZYH?cluster=devnet">3WZ4NPrM…</a></td>
+</tr>
+<tr id="h10">
+<td>10:00</td>
+<td><span class="tag missing">전부 빠짐</span></td>
+<td class="r">0/60</td>
+<td class="r">0.000</td>
+<td class="mono" title="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">e3b0c44298fc</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/2JReGNMKSGhiHYsK41ZN74JVfb6WCu17SpeCyhCFSVLTLt5QkufaVeo9jG9HU4Z5GbYqtkokb8n6jXENsu8C4bfZ?cluster=devnet">2JReGNMK…</a></td>
+</tr>
+<tr id="h11">
+<td>11:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">111.046</td>
+<td class="mono" title="77de0e94deea32feaf29e52827397034c57cc6351d9c68dca5c4fa8dcb3de2e1">77de0e94deea</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/3cyyfwTrSgfbPoPpUPJHo6ZwNhRpYKPb2MLw7e2kzHEq4prHQQH5h4kNZFpXf9mHe4uJxEs2fmg6Rr1cRhDsFsd1?cluster=devnet">3cyyfwTr…</a></td>
+</tr>
+<tr id="h12">
+<td>12:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">106.396</td>
+<td class="mono" title="4b05c4d0b12a66348b465c67ecaa715654d57e6a7afb3f23fe3bd9f31bc63860">4b05c4d0b12a</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/3JtoCjNwd56BNiv6VVaWk2CjPTdgqAR3Qqdr6aZTgZgX5VLp5V1T2yPEttcREEZTfcQTw3FckTxX15XTKerceRbP?cluster=devnet">3JtoCjNw…</a></td>
+</tr>
+<tr id="h13">
+<td>13:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">99.586</td>
+<td class="mono" title="177a2ec092e007b1a5c8cc9175b1ed642e00f39acedc5809911efbb5eb7130cc">177a2ec092e0</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/B1AQPLq89aaE3uicKRbV9S6Pw3KPWskZjkr8ZKkqJ17CLgan9MyEK7p9KHBS4CnubiSyqawmn8zbaN9pgSguypM?cluster=devnet">B1AQPLq8…</a></td>
+</tr>
+<tr id="h14">
+<td>14:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">93.551</td>
+<td class="mono" title="08fd35e16e4d7f66cce349162c0348e2b0c1c30a2353dfc2bce0431cee9b4fd4">08fd35e16e4d</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/Dg2iwbVB4nGQjLLrtsrKEQKMrbtAV2qybum3GQcdr2JToULQRgV2pk1DyzyVt79YpFLv8eVuDvECDAsKC6Ud4e3?cluster=devnet">Dg2iwbVB…</a></td>
+</tr>
+<tr id="h15">
+<td>15:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">88.605</td>
+<td class="mono" title="41fb741210f0a9f82e5eaad1573ace2bec4e55a9943a621d9d0e1a448fb9f63d">41fb741210f0</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/2KK7qUwKh3qB1yGj2XFKRxpGWG4gBpdpDUXw2Dkj7D643kUyx5zhPtn54pzeh6T4iNz7njmNF6eLPa7542R8WEGQ?cluster=devnet">2KK7qUwK…</a></td>
+</tr>
+<tr id="h16">
+<td>16:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">86.345</td>
+<td class="mono" title="1b87edc76271dae92811648cd8b8cc18c9e33558c5ebaa552093cf0c8062135f">1b87edc76271</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/zqEv22dVU8wC6aKUZ3ZueDpwhc8bWSQ1zn8qcEyHPdCB5ycA1SnmkbN6MDTRgE7P5qw49EyovP4GcJsnekZep9z?cluster=devnet">zqEv22dV…</a></td>
+</tr>
+<tr id="h17">
+<td>17:00</td>
+<td><span class="tag partial">일부 빠짐</span></td>
+<td class="r">50/60</td>
+<td class="r">70.224</td>
+<td class="mono" title="517be2b2bff0785e1462d0ed14df3fd44d075768f8542ddcb478ad83d041f199">517be2b2bff0</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/3dQyv8b9ccb1J6vuyoFawcsqhDMAt8n2hzV4ZnM4eLjfUspiT3AP6MJf9JssuQcTcGwFWVu2HZKkAiRqchL93fst?cluster=devnet">3dQyv8b9…</a></td>
+</tr>
+<tr id="h18">
+<td>18:00</td>
+<td><span class="tag partial">일부 빠짐</span></td>
+<td class="r">50/60</td>
+<td class="r">70.267</td>
+<td class="mono" title="85d48bb90b0323344bea00da299ec14069b11f906fd5c905d2ded037eceb04e2">85d48bb90b03</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/2rX3WR99HZzcGNutoX7Eq6uJaWCMYRiak2P9xQga7zaEDkvoVe3CNZZouELJmVQ2z4cseikoSKR3pbWk457MTF7g?cluster=devnet">2rX3WR99…</a></td>
+</tr>
+<tr id="h19">
+<td>19:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">86.643</td>
+<td class="mono" title="f33731b758d79fa94dc769189d04908cb64d6546531cedd84d2e973e60733f06">f33731b758d7</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/2wyFexUj7akJMzMqyAF8W5Pg21HsbdGsZTt9EBo4JCayjhVvg2EzfhKonMBaDGQv8tftjsCM2qzbTT1eMrCiResL?cluster=devnet">2wyFexUj…</a></td>
+</tr>
+<tr id="h20">
+<td>20:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">89.060</td>
+<td class="mono" title="787232b1014e913d57de1209b7d557a0786aa2674450fd3c725853afe337fd9b">787232b1014e</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/4u8LYqHffhL5V52yig6Rp9CRbZXPU4QLDRSUN29BYCJwhtLUoV3uhygz1DskpFPmxH1c5jmra8Xv6pnxpYm7kHNo?cluster=devnet">4u8LYqHf…</a></td>
+</tr>
+<tr id="h21">
+<td>21:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">93.599</td>
+<td class="mono" title="59fed8824656913efd7676d1494bdb1072fb2a6a78303149fe6de5cf6931ac73">59fed8824656</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/5np4U7nbz8y5RAkKETaUjid3kN9fPBWPMq6mEFos7wtHrnXbPVrN8JaRfULzMKBomaZEc16mJqrBF1LCyybxHqPQ?cluster=devnet">5np4U7nb…</a></td>
+</tr>
+<tr id="h22">
+<td>22:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">98.825</td>
+<td class="mono" title="40ca846e88bbfe1decb73b8a3dedeb17ebed0c82d7e7a5d54d37e163f8c31f25">40ca846e88bb</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/6g5VvymPHgmPMBLmNswxqEA5ya4e82Zd6YepA5csuQGXkcBMfBhaSJJQ6D5ni8LUKysY47dTtxTd8hj3zqvrzHj?cluster=devnet">6g5VvymP…</a></td>
+</tr>
+<tr id="h23">
+<td>23:00</td>
+<td><span class="tag ok">정상</span></td>
+<td class="r">60/60</td>
+<td class="r">104.849</td>
+<td class="mono" title="9faa1b920984a73a5f5484a628a89666eb556ac72f9707a663c28e0e944ac72b">9faa1b920984</td>
+<td>일치</td>
+<td><a href="https://explorer.solana.com/tx/49wXffQH4oFwB155F3f3mLCEU9T8rH28Hdy5cLmQqMfKPaA1bs3Br9ucwSuDfhjvqesXS2m3LzRRXn2EpodgZebt?cluster=devnet">49wXffQH…</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<footer>기록 계정 <a class="mono" href="https://explorer.solana.com/address/CbixKLGuTc3WBSWfbP7g5YrS5ZW7awJrgGNcsqJBEWAJ?cluster=devnet">CbixKLGuTc3WBSWfbP7g5YrS5ZW7awJrgGNcsqJBEWAJ</a>. 지문은 구간 원본의 SHA-256이고, 거래 링크에서 체인에 남은 메모를 볼 수 있습니다.</footer>
+</body>
+</html>
