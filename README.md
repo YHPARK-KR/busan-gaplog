@@ -1,8 +1,8 @@
 # busan-gaplog
 
-설비 가동 기록에서 **빠진 구간까지** 솔라나에 남기는 시연입니다. 기록을 1시간 단위로 잘라 구간마다 지문과 받은 개수, 상태를 메모 거래로 적고, 원본은 체인 밖에 둡니다. 누구든 원본에서 지문을 다시 계산해 체인과 맞춰 볼 수 있습니다.
+설비 가동 기록에서 **빠진 구간까지** 솔라나에 남기는 시연입니다. 기록을 1시간 단위로 잘라 구간마다 지문과 받은 개수, 상태를 메모 거래로 적습니다. 원본은 체인 밖에 둡니다. 누구든 원본에서 지문을 다시 계산해 체인과 맞춰 볼 수 있습니다.
 
-> 실제 설비 데이터가 아니라 모의 기록이고, 솔라나 데브넷에서 돌렸습니다. 부산 블록체인 해커톤 2026 출품용 시연입니다.
+> 실제 설비 데이터가 아니라 모의 기록입니다. 솔라나 데브넷에서 돌렸습니다. 부산 블록체인 해커톤 2026 출품용 시연입니다.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/windows-dark.svg">
@@ -25,11 +25,11 @@
 | 보류 구간 | 5개, 받은 값만 더하면 214.743 kWh |
 | 원본 두 곳을 고친 파일로 대조 | 고친 2개 구간이 불일치로 나옴 |
 
-기록에 쓴 계정은 [`CbixKLGu…BEWAJ`](https://explorer.solana.com/address/CbixKLGuTc3WBSWfbP7g5YrS5ZW7awJrgGNcsqJBEWAJ?cluster=devnet)이고, 거래 서명 24개는 [`data/ledger.json`](data/ledger.json)에 있습니다.
+기록에 쓴 계정은 [`CbixKLGu…BEWAJ`](https://explorer.solana.com/address/CbixKLGuTc3WBSWfbP7g5YrS5ZW7awJrgGNcsqJBEWAJ?cluster=devnet)입니다. 거래 서명 24개는 [`data/ledger.json`](data/ledger.json)에 있습니다.
 
 ## 체인에 남는 것
 
-구간 하나가 거래 하나이고, 메모는 173바이트 안팎의 JSON입니다. 아래는 03시 구간입니다. 60개가 와야 하는데 35개만 왔다고 적혀 있습니다. ([탐색기에서 보기](https://explorer.solana.com/tx/5o8o8AsoQHnEit5pXKGeCrZQwXF4wpAbzeHXHmgh6HCtozNnEwebW4dUVaX8yT16Lfe8mMJGD2sdxQp3GmfxhkmN?cluster=devnet))
+구간 하나가 거래 하나입니다. 메모는 173바이트 안팎의 JSON입니다. 아래는 03시 구간입니다. 60개가 와야 하는데 35개만 왔다고 적혀 있습니다. ([탐색기에서 보기](https://explorer.solana.com/tx/5o8o8AsoQHnEit5pXKGeCrZQwXF4wpAbzeHXHmgh6HCtozNnEwebW4dUVaX8yT16Lfe8mMJGD2sdxQp3GmfxhkmN?cluster=devnet))
 
 ```json
 {"v":1,"dev":"MOCK-ESD-01","from":1795143600,"sec":3600,"exp":60,"got":35,"st":"PARTIAL","sum":74.252,"h":"33bffe795495061051e9549ecd7caf15f07ecda96ad22e5e2c4d6fb7b6897348"}
@@ -56,7 +56,7 @@ node verify.js                          # 저장소의 원본과 데브넷 기�
 node verify.js data/raw-tampered.json   # 원본을 고친 파일로 대조하면 불일치가 나온다
 ```
 
-처음부터 다시 만들려면 아래 순서입니다. 기록할 때는 데브넷 SOL이 든 키가 필요하고, 키는 `.keys/`에 만들어지며 저장소에는 올리지 않습니다.
+처음부터 다시 만들려면 아래 순서입니다. 기록할 때는 데브넷 SOL이 든 키가 필요합니다. 키는 `.keys/`에 만들어지고 저장소에는 올리지 않습니다.
 
 ```bash
 node gen.js      # 모의 기록 24시간 생성 → data/raw.json
@@ -85,6 +85,6 @@ node verify.js   # 대조와 확정분, 보류분 합계
 ## 한계
 
 - 값은 모의 기록입니다. 실제 설비나 계량기에 붙여 본 적은 없습니다.
-- 데브넷 기록이라 실제 가치와 연결돼 있지 않고, 데브넷이 초기화되면 거래가 사라질 수 있습니다.
+- 데브넷 기록이라 실제 가치와 연결돼 있지 않습니다. 데브넷이 초기화되면 거래가 사라질 수 있습니다.
 - 지문은 원본이 바뀌지 않았다는 것만 보여 줍니다. 처음 들어온 값이 맞는 값인지는 계측 쪽에서 따로 보장해야 합니다.
 - 설비 한 대, 하루치만 다뤘습니다.
