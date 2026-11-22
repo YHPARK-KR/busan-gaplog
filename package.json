@@ -1,7 +1,7 @@
 {
   "name": "busan-gaplog",
   "version": "1.0.0",
-  "description": "",
+  "description": "설비 가동 기록의 빠진 구간까지 솔라나 메모 거래로 남기는 시연(모의 데이터, 데브넷)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
